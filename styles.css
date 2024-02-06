@@ -1,0 +1,167 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.back{
+    height: 1000px;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(images/home.png);
+    background-size: cover;
+    background-position: center;  
+}
+
+.backf{
+    height: 1000px;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(images/homef.jpg);
+    background-size: cover;
+    background-position: center;  
+}
+
+.backj{
+    height: 1000px;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(images/homej.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.logo{
+    width: 75px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.products{
+    display: inline-block;
+    margin-top: 120px;
+    margin-left: 40px;
+}
+
+.head{
+    width:100%;
+    position: absolute;
+    top: 32%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+    
+}
+
+.head h1{
+    color: white;
+    position: relative;
+    display: inline-block;
+    
+}
+
+.head h1::after{
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: #dc0b0e;
+    position: absolute;
+    left: 0%;
+    bottom: -2px;
+}
+
+.products .card{
+  width: 310px;
+  background:rgba(17, 17, 17, 0.75);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.75);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.products .card img{
+    padding: 5px;
+    padding-left: 60px;
+    height: 250px;
+
+}
+
+
+.products .card .desc{
+    color: white;
+    padding-left:  20px;
+    padding-top: 20px;
+    opacity: 60%;
+}
+
+.products .card .title{
+    color: white;
+    padding-top: 5px;
+    padding-left: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.products .card .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.products .card .box .price{
+     color: red;
+     padding-left: 10px;
+     
+}
+
+.products .card .box .button{
+    background: transparent;
+    font-weight: 900;
+    color: white;
+    font-size: 15px;
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 10px 18px;
+}
+
+.products .card .box .button:hover{
+    cursor: pointer;
+    background-color: #dc0b0e;
+}
+
+.navbar{
+    width: 85%;
+    padding: 35px 0;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #dc0b0e;
+    position: absolute;
+    left: 0%;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}
+
+
+
+
