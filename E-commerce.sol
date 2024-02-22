@@ -64,7 +64,7 @@ contract ECommerce {
 }
 
 
-contract Withdrawable {
+contract Withdraw {
     address public owner;
 
     modifier onlyOwner() {
