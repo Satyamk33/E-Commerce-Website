@@ -4,14 +4,14 @@ pragma solidity ^0.8.0;
 
 contract ECommerce {
     address public owner;
-    mapping(uint256 => Item) public items;
-    mapping(address => uint256) public balances;
+    mapping(uint256 => Item) public Items;
+    mapping(address => uint256) public Balance;
     uint256 mapsize;
 
     struct Item {
-        string name;
-        uint256 price;
-        uint256 quantity;
+        string Name;
+        uint256 Price;
+        uint256 Quantity;
     }
 
     event ItemAdded(uint256 itemId, string itemName, uint256 price, uint256 quantity);
@@ -26,40 +26,40 @@ contract ECommerce {
         owner = msg.sender;
     }
 
-    function addItem(uint256 itemId, string memory itemName, uint256 price, uint256 quantity) external onlyOwner {
-        require(items[itemId].price == 0, "Item with this ID already exists");
-        items[itemId] = Item(itemName, price, quantity);
+    function AddItem(uint256 itemId, string memory itemName, uint256 price, uint256 quantity) external onlyOwner {
+        require(Items[itemId].Price == 0, "Item with this ID already exists");
+        Items[itemId] = Item(itemName, price, quantity);
         emit ItemAdded(itemId, itemName, price, quantity);
         mapsize++;
     }
 
-    function getAvailableItems() external view returns (Item[] memory) {
+    function AvailableItems() external view returns (Item[] memory) {
         Item[] memory availableItems = new Item[](mapsize);
         uint256 index = 0;
         for (uint256 i = 0; i < mapsize; i++) {
-            if (items[i].quantity > 0) {
-                availableItems[index] = items[i];
+            if (Items[i].Quantity > 0) {
+                availableItems[index] = Items[i];
                 index++;
             }
         }
         return availableItems;
     }
 
-    function purchaseItem(uint256 itemId, uint256 quantity) external payable {
+    function PurchaseItem(uint256 itemId, uint256 quantity) external payable {
         require(quantity > 0, "Quantity must be greater than zero");
-        require(items[itemId].quantity >= quantity, "Not enough quantity available");
-        uint256 totalPrice = items[itemId].price * quantity;
+        require(Items[itemId].Quantity >= quantity, "Not enough Quantity available");
+        uint256 totalPrice = Items[itemId].Price * quantity;
         require(msg.value >= totalPrice, "Insufficient funds");
 
-        items[itemId].quantity -= quantity;
-        balances[owner] += totalPrice;
+        Items[itemId].Quantity -= quantity;
+        Balance[owner] += totalPrice;
         payable(owner).transfer(totalPrice);
 
-        emit ItemPurchased(itemId, items[itemId].name, quantity, totalPrice);
+        emit ItemPurchased(itemId, Items[itemId].Name, quantity, totalPrice);
     }
 
-    function getUserBalance() external view returns (uint256) {
-        return balances[msg.sender];
+    function UserBalance() external view returns (uint256) {
+        return Balance[msg.sender];
     }
 }
 
